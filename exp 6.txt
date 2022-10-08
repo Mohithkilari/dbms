@@ -1,0 +1,80 @@
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use laptop;
+Database changed
+mysql> select*from worker;
++---------+---------+-----------+------+--------+
+| name    | adress  | num       | age  | salary |
++---------+---------+-----------+------+--------+
+| bhargav | ongole  | 999299599 |   19 |  50000 |
+| mohith  | ongole  |    918240 |   19 |  20000 |
+| rohan   | chitoor | 834151954 |   19 | 100000 |
++---------+---------+-----------+------+--------+
+3 rows in set (0.02 sec)
+
+mysql> select*from worker where salary between 10000 and 60000;
++---------+--------+-----------+------+--------+
+| name    | adress | num       | age  | salary |
++---------+--------+-----------+------+--------+
+| bhargav | ongole | 999299599 |   19 |  50000 |
+| mohith  | ongole |    918240 |   19 |  20000 |
++---------+--------+-----------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select*from worker where salary in ('10000','30000');
+Empty set (0.00 sec)
+
+mysql> select*from worker where salary in ('10000','20000');
++--------+--------+--------+------+--------+
+| name   | adress | num    | age  | salary |
++--------+--------+--------+------+--------+
+| mohith | ongole | 918240 |   19 |  20000 |
++--------+--------+--------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select max(num) from worker;
++-----------+
+| max(num)  |
++-----------+
+| 999299599 |
++-----------+
+1 row in set (0.03 sec)
+
+mysql> select count(num);
+ERROR 1054 (42S22): Unknown column 'num' in 'field list'
+mysql> select count(num) from worker;
++------------+
+| count(num) |
++------------+
+|          3 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(num) from worker;
++----------+
+| min(num) |
++----------+
+|   918240 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(num) from worker;
++------------+
+| sum(num)   |
++------------+
+| 1834369793 |
++------------+
+1 row in set (0.03 sec)
+
+mysql>
